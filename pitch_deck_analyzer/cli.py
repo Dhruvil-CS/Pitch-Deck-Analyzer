@@ -52,10 +52,11 @@ def analyze_pitchdeck(input_path: str, output_path: str, search_online: bool = T
     company_hint = None
     if deck_text:
         first_lines = [ln.strip() for ln in deck_text.splitlines() if ln.strip()]
-        if first_lines:
-            candidate = first_lines[0]
-            if len(candidate.split()) <= 12:
-                company_hint = candidate
+        company_hint = first_lines
+        # if first_lines:
+        #     candidate = first_lines[0]
+        #     if len(candidate.split()) <= 12:
+        #         company_hint = candidate
 
     client = OpenRouterClient()
     instruction = "You are an expert analyzer. The provided information is the extracted text from the first page of a pitcher deck. Identify the name of the company from the text. The name is there in the text. Return from you should be just the name of the company, and nothing else."
